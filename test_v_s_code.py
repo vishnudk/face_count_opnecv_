@@ -1,7 +1,7 @@
 import numpy as np
 import cv2
 # from digit_reco_cnn import *
-from speech2 import *
+# from speech2 import *
 prev=(0,0)
 flag=0
 result=(0,0)
@@ -118,22 +118,23 @@ def edge(frame):
     cv2.imshow('sobely',sobely) 
     cv2.imshow('laplacian',laplacian) 
 def draw_line(image):
-    start_point = (0, 0) 
-    start_point2=(240,40)
+    # start_point2=(240,40)
     # End coordinate, here (250, 250) 
     # represents the bottom right corner of image 
-    end_point = (250, 250) 
-    
+    dim=image.shape
+    x_dim=int(dim[1]/2)
+    start_point = (x_dim, 0) 
+    end_point = (x_dim,int(dim[0])) 
     # Green color in BGR 
     color = (0, 255, 0) 
-    color1=(0,255,255)
+    # color1=(0,255,255)
     # Line thickness of 9 px 
     thickness = 2
-    end_point2=(300,300)
+    # end_point2=(300,300)
     # Using cv2.line() method 
     # Draw a diagonal green line with thickness of 9 px 
     image1 = cv2.line(image, start_point, end_point, color, thickness) 
-    image = cv2.line(image1, start_point2, end_point2, color1, thickness) 
+    # image = cv2.line(image1, start_point2, end_point2, color1, thickness) 
     return image
 def detect_faces(flag,cascade, test_image, scaleFactor = 1.1):
     # create a copy of the image to prevent any changes to the original one.
